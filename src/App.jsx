@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 import './App.css'
 import Cesta from "./componentes/Cesta"
 import ArticulosAccesibles from "./componentes/ArticulosAccesibles"
@@ -8,7 +8,6 @@ function App() {
     { codigo: 1, nombre: "Laptop", precio: 800, unidades: 10 },
     { codigo: 2, nombre: "Teclado", precio: 50, unidades: 50 },
     { codigo: 3, nombre: "Mouse", precio: 20, unidades: 30 },
-    
     { codigo: 4, nombre: "Monitor", precio: 200, unidades: 15 },
     { codigo: 5, nombre: "Disco Duro", precio: 100, unidades: 25 },
     { codigo: 6, nombre: "Memoria RAM", precio: 80, unidades: 40 },
@@ -28,10 +27,11 @@ function App() {
     { codigo: 20, nombre: "Silla Gaming", precio: 120, unidades: 15 }
   ];
 
+  
   return (
     <>
       <Cesta/>
-      <ArticulosAccesibles articulosIniciales={articulosIniciales}/>
+      <ArticulosAccesibles articulosIniciales={articulosIniciales} />
     </>
   )
 }

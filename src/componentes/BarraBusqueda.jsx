@@ -1,7 +1,10 @@
-export default function BarraBusqueda(){
+export default function BarraBusqueda({filterText,setFilterText}){
    return(
-    <>
-    <input type="text" placeholder="Busqueda"></input>
-    </>
+  
+    <form>
+      <input type="text" placeholder="Busqueda" value={filterText} onChange={(e)=>setFilterText(e.target.value)}></input>
+    </form>
+    
+    
    )
 }
