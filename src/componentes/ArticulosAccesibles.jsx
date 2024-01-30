@@ -1,11 +1,18 @@
 import BarraBusqueda from "./BarraBusqueda"
 import { useState } from "react";
-export default function ArticulosAccesibles({articulosIniciales}){
+export default function ArticulosAccesibles({articulosDisponibles, setArticulosDisponibles,setArticulosCesta}){
     const [filterText, setFilterText] = useState('');
-
+    console.log(articulosDisponibles);
+    const agregarArticulo=(articulo)=>{
+        console.log("entra");
+        setArticulosCesta((previusState)=>[...previusState,articulo])
+        setArticulosDisponibles(articulosDisponibles.map(art=>art.codigo===articulo.codigo ? {...art,unidades:art.unidades-1} :art))
+    }   
+    
     return(
         <>
         <BarraBusqueda filterText={filterText} setFilterText={setFilterText}/>
+        <h2>Articulos Disponibles</h2>
         <table>
             <thead>
                 <tr>
@@ -16,12 +23,12 @@ export default function ArticulosAccesibles({articulosIniciales}){
                 </tr>
             </thead>
             <tbody>
-                {articulosIniciales.filter(articulo=>articulo.nombre.includes(filterText)).map((articulo,index)=>
+                {articulosDisponibles.filter(articulo=>articulo.nombre.includes(filterText)).map((articulo,index)=>
                     <tr key={index}>
                         <td>{articulo.nombre}</td>
                         <td>{articulo.precio}</td>
                         <td>{articulo.unidades}</td>
-                        <td><button>Comprar</button></td>
+                        <td><button onClick={()=>agregarArticulo(articulo)}>Comprar</button></td>
                     </tr>
                 )}
             </tbody>

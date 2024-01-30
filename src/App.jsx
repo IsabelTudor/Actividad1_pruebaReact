@@ -2,6 +2,7 @@
 import './App.css'
 import Cesta from "./componentes/Cesta"
 import ArticulosAccesibles from "./componentes/ArticulosAccesibles"
+import { useState } from 'react';
 
 function App() {
   const  articulosIniciales= [
@@ -27,11 +28,12 @@ function App() {
     { codigo: 20, nombre: "Silla Gaming", precio: 120, unidades: 15 }
   ];
 
-  
+  const [articulosCesta,setArticulosCesta]=useState([])
+  const [articulosDisponibles,setArticulosDisponibles]=useState(articulosIniciales)
   return (
     <>
-      <Cesta/>
-      <ArticulosAccesibles articulosIniciales={articulosIniciales} />
+      <Cesta articulosCesta={articulosCesta} />
+      <ArticulosAccesibles articulosDisponibles={articulosDisponibles} setArticulosDisponibles={setArticulosDisponibles} setArticulosCesta={setArticulosCesta}/>
     </>
   )
 }
