@@ -32,7 +32,7 @@ function App() {
   const [articulosDisponibles,setArticulosDisponibles]=useState(articulosIniciales)
   return (
     <>
-      <Cesta articulosCesta={articulosCesta} />
+      <Cesta articulosCesta={articulosCesta} articulosDisponibles={articulosDisponibles} setArticulosDisponibles={setArticulosDisponibles} setArticulosCesta={setArticulosCesta}/>
       <ArticulosAccesibles articulosDisponibles={articulosDisponibles} setArticulosDisponibles={setArticulosDisponibles} setArticulosCesta={setArticulosCesta}/>
     </>
   )
