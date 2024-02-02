@@ -4,7 +4,7 @@ export default function ArticulosAccesibles({articulosDisponibles, setArticulosD
     const [filterText, setFilterText] = useState('');
     console.log(articulosDisponibles);
     const agregarArticulo=(articulo)=>{
-        console.log("entra");
+     
         setArticulosCesta((previusState)=>[...previusState,articulo])
         setArticulosDisponibles(articulosDisponibles.map(art=>art.codigo===articulo.codigo ? {...art,unidades:art.unidades-1} :art))
     }   

@@ -1,7 +1,9 @@
 export default function Cesta({articulosCesta, setArticulosCesta, setArticulosDisponibles, articulosDisponibles}){
     const eliminarArticulo=(articulo)=>{
-        setArticulosCesta((previusState)=>[...previusState, articulo]);
-        setArticulosDisponibles(articulosDisponibles.map(art => art.codigo === articulo.codigo ? {...art, unidades: art.unidades - 1} : art));
+        const nuevaCesta=articulosCesta.filter(item=>item.codigo !== articulo.codigo);
+        setArticulosCesta(nuevaCesta)
+        
+        setArticulosDisponibles(articulosDisponibles.map(art => art.codigo === articulo.codigo ? {...art, unidades: art.unidades + 1} : art));
     }
    
 
