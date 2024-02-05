@@ -1,11 +1,11 @@
 export default function Cesta({articulosCesta, setArticulosCesta, setArticulosDisponibles, articulosDisponibles}){
-    const eliminarArticulo=(articulo)=>{
-        const nuevaCesta=articulosCesta.filter(item=>item.codigo !== articulo.codigo);
-        setArticulosCesta(nuevaCesta)
-        
+    const total = articulosCesta.reduce((acc, articulo) => acc + articulo.precio, 0);
+
+    const eliminarArticuloCesta = (articulo) => {
+       
         setArticulosDisponibles(articulosDisponibles.map(art => art.codigo === articulo.codigo ? {...art, unidades: art.unidades + 1} : art));
-    }
-   
+    } 
+
 
     return(
         <>
@@ -22,13 +22,14 @@ export default function Cesta({articulosCesta, setArticulosCesta, setArticulosDi
                     <tr key={articulo.codigo}>
                         <td>{articulo.nombre}</td>
                         <td>{articulo.precio}</td>
-                        <td><button  onClick={()=>eliminarArticulo(element)}>Eliminar</button></td>
+                        <td><button id={articulo.codigo} onChange={(e)=>eliminarArticuloCesta(e.target.key)}>Eliminar</button></td>
                     </tr>
                 )}
-            </tbody>
-            <tfoot>
-             {articulosCesta.reduce((acc, articulo) => acc + articulo.precio, 0)}      
-            </tfoot>
+                <tr>
+                    <td>{total}</td>
+                </tr>
+            </tbody> 
+           
         </table>
         </>
     )
