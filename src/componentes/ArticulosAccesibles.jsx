@@ -2,7 +2,7 @@ import BarraBusqueda from "./BarraBusqueda"
 import { useState } from "react";
 export default function ArticulosAccesibles({articulosDisponibles, setArticulosDisponibles,setArticulosCesta}){
     const [filterText, setFilterText] = useState('');
-    console.log(articulosDisponibles);
+  
     const agregarArticulo=(articulo)=>{
      
         setArticulosCesta((previusState)=>[...previusState,articulo])

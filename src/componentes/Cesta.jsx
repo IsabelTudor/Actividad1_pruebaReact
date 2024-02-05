@@ -22,7 +22,7 @@ export default function Cesta({articulosCesta, setArticulosCesta, setArticulosDi
                     <tr key={articulo.codigo}>
                         <td>{articulo.nombre}</td>
                         <td>{articulo.precio}</td>
-                        <td><button id={articulo.codigo} onChange={(e)=>eliminarArticuloCesta(e.target.key)}>Eliminar</button></td>
+                        <td><button  onChange={()=>eliminarArticuloCesta()}>Eliminar</button></td>
                     </tr>
                 )}
                 <tr>
