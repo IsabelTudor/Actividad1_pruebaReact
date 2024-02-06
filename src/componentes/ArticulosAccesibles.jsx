@@ -1,17 +1,16 @@
-import BarraBusqueda from "./BarraBusqueda"
-import { useState } from "react";
 export default function ArticulosAccesibles({articulosDisponibles, setArticulosDisponibles,setArticulosCesta}){
-    const [filterText, setFilterText] = useState('');
+   const unidadesUpdate=(articulosDisponibles)=>{
+    
+   }
   
     const agregarArticulo=(articulo)=>{
-     
         setArticulosCesta((previusState)=>[...previusState,articulo])
         setArticulosDisponibles(articulosDisponibles.map(art=>art.codigo===articulo.codigo ? {...art,unidades:art.unidades-1} :art))
     }   
     
     return(
         <>
-        <BarraBusqueda filterText={filterText} setFilterText={setFilterText}/>
+        
         <h2>Articulos Disponibles</h2>
         <table>
             <thead>
@@ -23,11 +22,11 @@ export default function ArticulosAccesibles({articulosDisponibles, setArticulosD
                 </tr>
             </thead>
             <tbody>
-                {articulosDisponibles.filter(articulo=>articulo.nombre.includes(filterText)).map((articulo,index)=>
+                {articulosDisponibles.map((articulo,index)=>
                     <tr key={index}>
                         <td>{articulo.nombre}</td>
                         <td>{articulo.precio}</td>
-                        <td>{articulo.unidades}</td>
+                        <td>{unidadesUpdate()}</td>
                         <td><button onClick={()=>agregarArticulo(articulo)}>Comprar</button></td>
                     </tr>
                 )}
